@@ -12,11 +12,17 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-
+/**
+ * 
+ * 
+ */
 @Entity
 @Table(name = "reservation")
 public class Reservaciones implements Serializable  {
     
+    /**
+     * 
+     */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idReservation;
