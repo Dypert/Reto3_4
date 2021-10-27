@@ -34,7 +34,7 @@ public class Reservaciones implements Serializable  {
     @JsonIgnoreProperties({"reservations","messages"})
     private Cliente client;
 
-    private String score; //depende el grupo
+    private String score; //atributo
 
     public Integer getIdReservation() {
         return idReservation;
