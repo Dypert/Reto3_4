@@ -1,8 +1,6 @@
 
 package Domingo_Reto3.Reto3;
 
-import Domingo_Reto3.Reto3.Cliente;
-import Domingo_Reto3.Reto3.RepositorioCliente;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,23 +10,23 @@ import org.springframework.stereotype.Service;
 @Service
 public class ServiciosCliente {
        @Autowired
-     private RepositorioCliente metodosCrud;
+     private RepositorioCliente metodosCrud1;
      
      public List<Cliente> getAll(){
-        return metodosCrud.getAll();
+        return metodosCrud1.getAll();
     }
      
-      public Optional<Cliente> getClient(int clientId) {
-        return metodosCrud.getCliente(clientId);
+      public Optional<Cliente> getCliente(int clientId) {
+        return metodosCrud1.getCliente(clientId);
     }
 
     public Cliente save(Cliente client){
         if(client.getIdClient()==null){
-            return metodosCrud.save(client);
+            return metodosCrud1.save(client);
         }else{
-            Optional<Cliente> e= metodosCrud.getCliente(client.getIdClient());
+            Optional<Cliente> e= metodosCrud1.getCliente(client.getIdClient());
             if(e.isEmpty()){
-                return metodosCrud.save(client);
+                return metodosCrud1.save(client);
             }else{
                 return client;
             }
@@ -37,7 +35,7 @@ public class ServiciosCliente {
 
     public Cliente update(Cliente client){
         if(client.getIdClient()!=null){
-            Optional<Cliente> e= metodosCrud.getCliente(client.getIdClient());
+            Optional<Cliente> e= metodosCrud1.getCliente(client.getIdClient());
             if(!e.isEmpty()){
                 if(client.getName()!=null){
                     e.get().setName(client.getName());
@@ -48,7 +46,7 @@ public class ServiciosCliente {
                 if(client.getPassword()!=null){
                     e.get().setPassword(client.getPassword());
                 }
-                metodosCrud.save(e.get());
+                metodosCrud1.save(e.get());
                 return e.get();
             }else{
                 return client;
@@ -58,9 +56,9 @@ public class ServiciosCliente {
         }
     }
 
-    public boolean deleteClient(int clientId) {
-        Boolean aBoolean = getClient(clientId).map(client -> {
-            metodosCrud.delete(client);
+    public boolean deleteClient(int id) {
+        Boolean aBoolean = getCliente(id).map(client -> {
+            metodosCrud1.delete(client);
             return true;
         }).orElse(false);
         return aBoolean;

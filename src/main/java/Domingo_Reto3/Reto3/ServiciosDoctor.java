@@ -65,9 +65,9 @@ public class ServiciosDoctor {
     }
 
 
-    public boolean deleteDoctor(int doctorId) {
+    public boolean deleteDoctor(int id) {
        
-        Boolean aBoolean = getDoctor(doctorId).map(doctor -> {
+        Boolean aBoolean = getDoctor(id).map(doctor -> {
             metodosCrud.delete(doctor);
             return true;
         }).orElse(false);

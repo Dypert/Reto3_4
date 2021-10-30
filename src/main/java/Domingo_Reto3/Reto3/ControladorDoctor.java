@@ -22,32 +22,40 @@ import org.springframework.web.bind.annotation.RestController;
 @CrossOrigin(origins = "*", methods= {RequestMethod.GET,RequestMethod.POST,RequestMethod.PUT,RequestMethod.DELETE})
 
 public class ControladorDoctor {
+    
+//prueba 
+    @GetMapping("/Hola Mundo")
+    public String saludar(){
+        return "Hola Mundo";
+    }
+   
+    
      @Autowired
-    private ServiciosDoctor servicio;
+    private ServiciosDoctor servicios;
     @GetMapping("/all")
-    public List<Doctor> getDoctors(){     //Doctors con s 
-        return servicio.getAll();
+    public List<Doctor> getDoctor(){     //Doctors con s 
+        return servicios.getAll();
     }
 
     @GetMapping("/{id}")
-    public Optional<Doctor> getDoctor(@PathVariable("id") int doctorId) {
-        return servicio.getDoctor(doctorId);
+    public Optional<Doctor> getDoctor(@PathVariable("id") int id) {
+        return servicios.getDoctor(id);
     }
 
     @PostMapping("/save")
     @ResponseStatus(HttpStatus.CREATED)
     public Doctor save(@RequestBody Doctor doctor) {
-        return servicio.save(doctor);
+        return servicios.save(doctor);
     }
     @PutMapping("/update")
     @ResponseStatus(HttpStatus.CREATED)
     public Doctor update(@RequestBody Doctor doctor) {
-        return servicio.update(doctor);
+        return servicios.update(doctor);
     }
 
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public boolean delete(@PathVariable("id") int doctorId) {
-        return servicio.deleteDoctor(doctorId);
+    public boolean delete(@PathVariable("id") int id) {
+        return servicios.deleteDoctor(id);
     } 
 }

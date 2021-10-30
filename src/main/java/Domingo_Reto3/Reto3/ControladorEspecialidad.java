@@ -24,34 +24,34 @@ import org.springframework.web.bind.annotation.RestController;
 
 public class ControladorEspecialidad {
       @Autowired
-    private ServiciosEspecialidad servicio;
+    private ServiciosEspecialidad servicios;
       
     @GetMapping("/all")
-    public List<Especialidad> getEspecialidad(){
-        return servicio.getAll();
+    public List<Especialidad> getSpecialty(){
+        return servicios.getAll();
     }
 
     @GetMapping("/{id}")
-    public Optional<Especialidad> getEspecialidad(@PathVariable("id") int especialidad) {
+    public Optional<Especialidad> getSpecialty(@PathVariable("id") int especialidad) {
           int especialidadId = 0;
-        return servicio.getEspecialidad(especialidadId);
+        return servicios.getSpecialty(especialidadId);
     }
 
     @PostMapping("/save")
     @ResponseStatus(HttpStatus.CREATED)
     public Especialidad save(@RequestBody Especialidad especialidad) {
-        return servicio.save(especialidad);
+        return servicios.save(especialidad);
     }
     @PutMapping("/update")
     @ResponseStatus(HttpStatus.CREATED)
     public Especialidad update(@RequestBody Especialidad especialidad) {
-        return servicio.update(especialidad);
+        return servicios.update(especialidad);
     }
 
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public boolean delete(@PathVariable("id") int categoriaId) {
-        return servicio.deletecategoria(categoriaId);
+    public boolean delete(@PathVariable("id") int id) {
+        return servicios.deleteEspecialidad(id);
     }
     
 }

@@ -23,13 +23,13 @@ public class Mensaje implements Serializable {
     private String messageText;
     
     @ManyToOne
-    @JoinColumn(name="id")
-    @JsonIgnoreProperties({"messages", "client", "reservations"})
+    @JoinColumn(name="doctorid")
+    @JsonIgnoreProperties({"messages", "reservations"})
     private Doctor doctor;
 
     @ManyToOne
     @JoinColumn(name="clientId")
-    @JsonIgnoreProperties({"messages", "client", "reservations"})
+    @JsonIgnoreProperties({"messages", "reservations"})
     private Cliente client;
 
     public Integer getIdMessage() {
@@ -52,7 +52,7 @@ public class Mensaje implements Serializable {
         return doctor;
     }
 
-    public void setDoctor(Doctor doctor) {  // 51 y 55 Era Doctor 
+    public void setDoctor(Doctor doctor) {
         this.doctor = doctor;
     }
 
@@ -63,6 +63,8 @@ public class Mensaje implements Serializable {
     public void setClient(Cliente client) {
         this.client = client;
     }
+
+    
     
 }
 

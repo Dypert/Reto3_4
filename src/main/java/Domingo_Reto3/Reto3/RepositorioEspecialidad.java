@@ -14,18 +14,17 @@ public class RepositorioEspecialidad {
     public List<Especialidad> getAll(){
         return (List<Especialidad>) crud.findAll();
     }
-    public Optional<Especialidad> getCategoria(int id){
+    public Optional<Especialidad> getSpecialty(int id){
         return crud.findById(id);
     }
 
-    public Especialidad save(Especialidad Especialidad){
-        return crud.save(Especialidad);
+    public Especialidad save(Especialidad especialidad){
+        return crud.save(especialidad);
     }
-    public void delete(Especialidad Especialidad){
-       crud.delete(Especialidad);
+    public void delete(Especialidad especialidad){
+       crud.delete(especialidad);
     }
 
-    Optional<Especialidad> getEspecialidad(int EspecialidadId) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    
+
 }

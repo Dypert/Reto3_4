@@ -9,24 +9,24 @@ import org.springframework.stereotype.Service;
 @Service
 public class ServiciosEspecialidad {
      @Autowired
-    private RepositorioEspecialidad metodosCrud;
-    private int especialidadId;
-
-    public List<Especialidad> getAll() {
-        return metodosCrud.getAll();
+    private RepositorioEspecialidad metodosCrud2;
+   
+    
+ public List<Especialidad> getAll() {
+        return metodosCrud2.getAll();
     }
-
-    public Optional<Especialidad> getEspecialidad(int EspecialidadId) {
-        return metodosCrud.getEspecialidad(EspecialidadId);
+     
+public Optional<Especialidad> getSpecialty(int EspecialidadId) {
+        return metodosCrud2.getSpecialty(EspecialidadId);
     }
 
     public Especialidad save(Especialidad especialidad) {
         if (especialidad.getId()== null) {
-            return metodosCrud.save(especialidad);
+            return metodosCrud2.save(especialidad);
         } else {
-            Optional<Especialidad> especialidad1 = metodosCrud.getEspecialidad(especialidad.getId());
+            Optional<Especialidad> especialidad1 = metodosCrud2.getSpecialty(especialidad.getId());
             if (especialidad1.isEmpty()) {
-                return metodosCrud.save(especialidad);
+                return metodosCrud2.save(especialidad);
             } else {
                 return especialidad;
             }
@@ -35,25 +35,29 @@ public class ServiciosEspecialidad {
 
     public Especialidad update(Especialidad especialidad){
         if(especialidad.getId()!=null){
-            Optional<Especialidad>g=metodosCrud.getEspecialidad(especialidad.getId());
+            Optional<Especialidad>g=metodosCrud2.getSpecialty(especialidad.getId());
             if(!g.isEmpty()){
-                if(especialidad.getDescription()!=null){
-                    g.get().setDescription(especialidad.getDescription());
-                }
                 if(especialidad.getName()!=null){
                     g.get().setName(especialidad.getName());
                 }
-                return metodosCrud.save(g.get());
+                if(especialidad.getDescription()!=null){
+                    g.get().setDescription(especialidad.getDescription());
+                }
+                return metodosCrud2.save(g.get());
             }
         }
         return especialidad;
+        
+      
     }
-    public boolean deletecategoria(int categoriaId){
-        Boolean d=getEspecialidad(especialidadId).map(especialidad -> {
-            metodosCrud.delete(especialidad);
+    public boolean deleteEspecialidad(int especialidadId){
+        Boolean d=getSpecialty(especialidadId).map(especialidad -> {
+            metodosCrud2.delete(especialidad);
             return true;
         }).orElse(false);
         return d;
     }
+
+   
     
 }

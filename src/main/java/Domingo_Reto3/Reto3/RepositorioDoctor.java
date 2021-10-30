@@ -9,25 +9,27 @@ import org.springframework.stereotype.Repository;
 public class RepositorioDoctor {
     
     @Autowired
-    private InterfaceDoctor crud;
+    private InterfaceDoctor crudDoctor;
 
     public List<Doctor> getAll(){
-        return (List<Doctor>) crud.findAll();
+        return (List<Doctor>) crudDoctor.findAll();
     }
 
-    public Optional<Doctor> getBike(int id){
-        return crud.findById(id);
+    public Optional<Doctor> getDoctor(int id){
+        return crudDoctor.findById(id);
     }
 
     public Doctor save(Doctor doctor){
-        return crud.save(doctor);
+        return crudDoctor.save(doctor);
     }
     public void delete(Doctor doctor){
-        crud.delete(doctor);
+        crudDoctor.delete(doctor);
     }
-
-    Optional<Doctor> getDoctor(int doctorId) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+/**
+ * 
+ * @param doctorId
+ * @return 
+ */
+   
     
 }

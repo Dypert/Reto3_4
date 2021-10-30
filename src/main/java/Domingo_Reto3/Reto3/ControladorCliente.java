@@ -23,32 +23,32 @@ import org.springframework.web.bind.annotation.RestController;
 
 public class ControladorCliente {
      @Autowired
-    private ServiciosCliente servicio;
+    private ServiciosCliente servicios;
   
     @GetMapping("/all")
-    public List<Cliente> getClients(){
-        return servicio.getAll();
+    public List<Cliente> getClient(){
+        return servicios.getAll();
     }
 
     @GetMapping("/{id}")
     public Optional<Cliente> getClient(@PathVariable("id") int clientId) {
-        return servicio.getClient(clientId);
+        return servicios.getCliente(clientId);
     }
 
     @PostMapping("/save")
     @ResponseStatus(HttpStatus.CREATED)
     public Cliente save(@RequestBody Cliente client) {
-        return servicio.save(client);
+        return servicios.save(client);
     }
     @PutMapping("/update")
     @ResponseStatus(HttpStatus.CREATED)
     public Cliente update(@RequestBody Cliente client) {
-        return servicio.update(client);
+        return servicios.update(client);
     }
 
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public boolean delete(@PathVariable("id") int clientId) {
-        return servicio.deleteClient(clientId);
+    public boolean delete(@PathVariable("id") int id) {
+        return servicios.deleteClient(id);
     }
 }
